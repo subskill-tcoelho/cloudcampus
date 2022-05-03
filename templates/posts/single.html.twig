@@ -1,0 +1,7 @@
+<header>
+    <h1>{{ posts.0.title }}</h1>
+    {% if posts.0.image is not null %}
+        <img src="/media/posts/{{ posts.0.image}}" width="100px"/>
+    {% endif %}
+</header>
+<p>{{ posts.0.content }}</p>

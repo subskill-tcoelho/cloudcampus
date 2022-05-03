@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des posts{% endblock %}
+
+{% block main %}
+
+    <div class="container-list-">
+        <table class="table table-middle-aligned">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date de création</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.publishedAt|date("d/m/y") }}</td>
+                    <td><button class="btn"><a href="{{ path('posts_single', {'slug':post.slug}) }}">voir</a></button>
+                    <form method="post" action="{{ path('post_delete', {'id':post.id}) }}" onsubmit="return confirm('Are you sure you want to delete ?');" ><button class="btn">Supprimer</button></form> </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
